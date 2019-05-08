@@ -1,5 +1,5 @@
 <p align="center">
-<img src="./examples/static/logo.png" alt="mark text" width="100" height="100">
+<img src="./examples/static/logo.png" width="100" height="100">
 </p>
 
 <h2 align="center">view-echarts</h2>
@@ -13,9 +13,6 @@
   </a>
   <a>
     <img src="https://img.shields.io/badge/license-MIT-000000.svg" alt="License">
-  </a>
-  <a href="https://gitter.im/ElemeFE/v-charts?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge">
-    <img src="https://badges.gitter.im/ElemeFE/v-charts.svg" alt="Join the chat">
   </a>
 </p>
 
