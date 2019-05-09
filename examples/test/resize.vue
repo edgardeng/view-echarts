@@ -6,21 +6,21 @@
     height: { type: String },
   -->
   <div>
-    <ve-line :data="chartData"></ve-line>
-    <ve-line :data="chartData" :cancel-resize-check="false"></ve-line>
+    <vi-line :data="chartData"></vi-line>
+    <vi-line :data="chartData" :cancel-resize-check="false"></vi-line>
     <button @click="resizeable = !resizeable">
       change resizeable: {{ resizeable }}
     </button>
-    <ve-line :data="chartData" :resizeable="resizeable"></ve-line>
+    <vi-line :data="chartData" :resizeable="resizeable"></vi-line>
     <button @click="change">change width height</button>
-    <ve-line :data="chartData" :width="chartWidth" :height="chartHeight"></ve-line>
-    <ve-line :data="chartData" :resizeable="false"></ve-line>
-    <ve-line :data="chartData" :resize-delay="1000"></ve-line>
+    <vi-line :data="chartData" :width="chartWidth" :height="chartHeight"></vi-line>
+    <vi-line :data="chartData" :resizeable="false"></vi-line>
+    <vi-line :data="chartData" :resize-delay="1000"></vi-line>
   </div>
 </template>
 
 <script>
-import { VeLine } from '../../src/index.es'
+import { ViLine } from '../../src/index.es'
 import { LINE_DATA } from './data'
 export default {
   data () {
@@ -37,6 +37,6 @@ export default {
       this.chartHeight = this.chartHeight === '400px' ? '300px' : '400px'
     }
   },
-  components: { VeLine }
+  components: { ViLine }
 }
 </script>

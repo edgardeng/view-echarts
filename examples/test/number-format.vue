@@ -1,13 +1,13 @@
 <template>
   <div>
-    <ve-line :settings="chartSettings" :data="chartData"></ve-line>
+    <vi-line :settings="chartSettings" :data="chartData"></vi-line>
   </div>
 </template>
 
 <script>
-import { VeLine } from '../../src/index.es'
+import { ViLine } from '../../src/index.es'
 import { LINE_DATA } from '../test/data'
-VeLine._numerify.setOptions({
+ViLine._numerify.setOptions({
   abbrLabel: {
     th: 'K',
     mi: 'M',
@@ -24,6 +24,6 @@ export default {
       chartData: LINE_DATA
     }
   },
-  components: { VeLine }
+  components: { ViLine }
 }
 </script>

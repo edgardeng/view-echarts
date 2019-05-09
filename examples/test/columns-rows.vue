@@ -6,33 +6,33 @@
     height: { type: String, default: '400px' }
   -->
   <div>
-    width height
-    <ve-line
+
+    <vi-line
       :data="chartData"
       class="custom-class"
       width="300px"
       height="300px">
-    </ve-line>
+    </vi-line>
     <button @click="changeSettings">trigger change</button>
     <br>
     change delay 0
-    <ve-line
+    <vi-line
       :data="chartData"
       :after-config="afterConfig"
       :settings="chartSettings">
-    </ve-line>
-    change delay 1000
-    <ve-line
+    </vi-line>
+    change delay 2000
+    <vi-line
       :data="chartData"
-      :after-config="afterConfig.bind(this, 1)"
-      :change-delay="1000"
+      :after-config="afterConfig.bind(this, 2)"
+      :change-delay="2000"
       :settings="chartSettings">
-    </ve-line>
+    </vi-line>
   </div>
 </template>
 
 <script>
-import { VeLine } from '../../src/index.es'
+import { ViLine } from '../../src/index.es'
 import { LINE_DATA } from './data'
 export default {
   data () {
@@ -53,6 +53,6 @@ export default {
       return arguments[arguments.length - 1]
     }
   },
-  components: { VeLine }
+  components: { ViLine }
 }
 </script>

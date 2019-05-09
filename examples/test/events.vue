@@ -1,18 +1,18 @@
 <template>
   <!-- 测试属性
-    events: Object
+    evints: Object
   -->
   <div>
-    <ve-line :data="chartData" :events="events"></ve-line>
+    <vi-line :data="chartData" :evints="evints"></vi-line>
   </div>
 </template>
 
 <script>
-import { VeLine } from '../../src/index.es'
+import { ViLine } from '../../src/index.es'
 import { LINE_DATA } from './data'
 export default {
   data () {
-    this.events = {
+    this.evints = {
       click (v) {
         console.log('v', v)
       }
@@ -21,6 +21,6 @@ export default {
       chartData: LINE_DATA
     }
   },
-  components: { VeLine }
+  components: { ViLine }
 }
 </script>

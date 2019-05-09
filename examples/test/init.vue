@@ -6,16 +6,16 @@
   -->
   <div>
     theme
-    <ve-line :data="chartData" :theme="theme"></ve-line>
+    <vi-line :data="chartData" :theme="theme"></vi-line>
     themeName
-    <ve-line :data="chartData" theme-name="test"></ve-line>
-    initOptions  svg
-    <ve-line :data="chartData" :init-options="initOptions"></ve-line>
+    <vi-line :data="chartData" theme-name="test"></vi-line>
+    initOptions svg
+    <vi-line :data="chartData" :init-options="initOptions"></vi-line>
   </div>
 </template>
 
 <script>
-import { VeLine } from '../../src/index.es'
+import { ViLine } from '../../src/index.es'
 import { LINE_DATA } from './data'
 import echarts from 'echarts/lib/echarts'
 import 'zrender/lib/svg/svg'
@@ -40,6 +40,6 @@ export default {
       chartData: LINE_DATA
     }
   },
-  components: { VeLine }
+  components: { ViLine }
 }
 </script>

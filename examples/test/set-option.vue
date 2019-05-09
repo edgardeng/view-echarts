@@ -1,16 +1,16 @@
 <template>
   <div>
-    <ve-line
+    <vi-line
       :set-option-opts="false"
       :data="chartData"
       :data-zoom="chartDataZoom">
-    </ve-line>
+    </vi-line>
     <button @click="change">change</button>
   </div>
 </template>
 
 <script>
-import { VeLine } from '../../src/index.es'
+import { ViLine } from '../../src/index.es'
 import { LINE_DATA } from '../test/data'
 import 'echarts/lib/component/dataZoom'
 export default {
@@ -31,6 +31,6 @@ export default {
       })
     }
   },
-  components: { VeLine }
+  components: { ViLine }
 }
 </script>

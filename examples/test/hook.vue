@@ -8,22 +8,22 @@
     @ready-once
   -->
   <div>
-    <ve-line
+    <vi-line
       :before-config="beforeConfig"
       :after-config="afterConfig"
       :after-set-option="afterSetOption"
       :after-set-option-once="afterSetOptionOnce"
       @ready="ready"
-      @ready-once="readyOnve"
+      @ready-once="readyOnvi"
       :data="chartData"
       :settings="chartSettings">
-    </ve-line>
+    </vi-line>
     <button @click="chartSettings = {}">trigger change</button>
   </div>
 </template>
 
 <script>
-import { VeLine } from '../../src/index.es'
+import { ViLine } from '../../src/index.es'
 import { LINE_DATA } from './data'
 export default {
   data () {
@@ -50,10 +50,10 @@ export default {
     ready () {
       console.log('ready', arguments)
     },
-    readyOnve () {
-      console.log('readyOnve', arguments)
+    readyOnvi () {
+      console.log('readyOnvi', arguments)
     }
   },
-  components: { VeLine }
+  components: { ViLine }
 }
 </script>

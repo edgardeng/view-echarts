@@ -23,21 +23,23 @@
     animation: Object
   -->
   <div>
-    grid backgroundColor
-    <ve-line :data="chartData" :grid="chartGrid" background-color="#eee"></ve-line>
-    <ve-line :data="chartData" :grid="chartGrid1"></ve-line>
-    colors
-    <ve-line :data="chartData" :colors="chartColors"></ve-line>
-    visualMap
-    <ve-line :data="chartData" :visual-map="visualMap"></ve-line>
-    dataZoom
-    <ve-line :data="chartData" :data-zoom="dataZoom"></ve-line>
-    toolbox
-    <ve-line :data="chartData" :toolbox="toolbox"></ve-line>
-    title
-    <ve-line :data="chartData" :title="title"></ve-line>
-    others
-    <ve-line
+    <h2> backgroundColor</h2>
+    <vi-line :data="chartData" :grid="chartGrid" background-color="#eee"></vi-line>
+    <h2> grid</h2>
+    <vi-line :data="chartData" :grid="chartGrid1"></vi-line>
+    <h2> colors</h2>
+    <vi-line :data="chartData" :colors="chartColors"></vi-line>
+    <h2>visualMap</h2>
+    <vi-line :data="chartData" :visual-map="visualMap"></vi-line>
+    <h2>dataZoom</h2>
+    <vi-line :data="chartData" :data-zoom="dataZoom"></vi-line>
+    <h2>toolbox</h2>
+    <vi-line :data="chartData" :toolbox="toolbox"></vi-line>
+    <h2>title</h2>
+    <vi-line :data="chartData" :title="title" :extend="theme"></vi-line>
+    <h2>others</h2>
+    <vi-line
+        :data="chartData"
       :legend="legend"
       :x-axis="xAxis"
       :y-axis="yAxis"
@@ -51,12 +53,12 @@
       :series="series"
       :text-style="textStyle"
       :after-config="afterConfig">
-    </ve-line>
+    </vi-line>
   </div>
 </template>
 
 <script>
-import { VeLine } from '../../src/index.es'
+import { ViLine } from '../../src/index.es'
 import { LINE_DATA } from './data'
 import 'echarts/lib/component/visualMap'
 import 'echarts/lib/component/dataZoom'
@@ -84,14 +86,14 @@ export default {
         dataView: { readOnly: false },
         magicType: { type: ['line', 'bar'] },
         restore: {},
-        saveAsImage: {}
+        saviAsImage: {}
       }
     }
     this.title = {
       textAlign: 'left',
-      text: 'chart-title',
+      text: 'Custom Chart Title',
       textStyle: {
-        fontSize: 12,
+        fontSize: 20,
         fontWeight: 'normal'
       }
     }
@@ -107,6 +109,54 @@ export default {
     this.graphic = {}
     this.series = {}
     this.textStyle = {}
+    this.theme = {
+      colors: ['#4ea397', '#00c3aa', '#7bd9a5'],
+      backgroundColor: 'rgba(80,0,0,0)',
+      textStyle: {},
+      title: {
+        textStyle: {
+          color: '#66dd00'
+        },
+        subtextStyle: {
+          color: '#999999'
+        }
+      },
+      legend:{
+        textStyle:{
+          color: '#11dddd'
+        }
+      },
+      xAxis: {
+        axisLine: {
+          lineStyle: {
+            color: '#11dddd'
+          }
+        }
+      },
+      yAxis: {
+        axisLine: {
+          lineStyle: {
+            color: '#11dddd'
+          }
+        }
+      },
+      line: {
+        itemStyle: {
+          normal: {
+            borderWidth: 2
+          }
+        },
+        lineStyle: {
+          normal: {
+            width: 3
+          },
+          color: '#66dd00'
+        },
+        symbolSize: 10,
+        symbol: 'emptyCircle',
+        smooth: true
+      }
+    }
     return {
       chartData: LINE_DATA
     }
@@ -117,7 +167,6 @@ export default {
       return v
     }
   },
-  components: { VeLine }
+  components: { ViLine }
 }
 </script>
-

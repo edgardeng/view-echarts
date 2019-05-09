@@ -43,10 +43,10 @@ const components = [
   // ViWordcloud
 ]
 
-function install(Vue, _) {
+function install (Vue, _) {
   components.forEach(component => {
     Vue.component(component.name, component)
-})
+  })
 }
 
 export {

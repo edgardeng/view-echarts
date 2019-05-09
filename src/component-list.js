@@ -2,7 +2,6 @@
 module.exports = {
   ViBar: { src: 'src/packages/bar/index.js', dist: 'lib/bar' },
   ViHistogram: { src: 'src/packages/histogram/index.js', dist: 'lib/histogram' },
-  ViFunnel: { src: 'src/packages/funnel/index.js', dist: 'lib/funnel' },
   ViLine: { src: 'src/packages/line/index.js', dist: 'lib/line' },
   ViPie: { src: 'src/packages/pie/index.js', dist: 'lib/pie' },
   ViRing: { src: 'src/packages/ring/index.js', dist: 'lib/ring' },
@@ -11,7 +10,8 @@ module.exports = {
   ViChart: { src: 'src/packages/chart/index.js', dist: 'lib/chart' },
   ViMap: { src: 'src/packages/map/index.js', dist: 'lib/map' },
   ViIndex: { src: 'src/packages/index/index.js', dist: 'lib/index' },
-  // ViScatter: { src: 'src/packages/scatter/index.js', dist: 'lib/scatter' },
+  ViScatter: { src: 'src/packages/scatter/index.js', dist: 'lib/scatter' },
+  // ViFunnel: { src: 'src/packages/funnel/index.js', dist: 'lib/funnel' },
   // ViWaterfall: { src: 'src/packages/waterfall/index.js', dist: 'lib/waterfall' },
   // ViBmap: { src: 'src/packages/bmap/index.js', dist: 'lib/bmap' },
   // ViAmap: { src: 'src/packages/amap/index.js', dist: 'lib/amap' },

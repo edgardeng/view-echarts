@@ -119,7 +119,7 @@ function getValueData (seriesTemp, dims) {
   return result
 }
 
-function getBarSeries (args) {
+export function getBarSeries (args) {
   const {
     innerRows,
     metrics,
@@ -175,6 +175,7 @@ function getBarSeries (args) {
       set(seriesItem, 'itemStyle.normal.opacity', itemOpacity)
     }
 
+    seriesItem.barMaxWidth = 30
     return seriesItem
   })
 
@@ -230,6 +231,7 @@ export const bar = (columns, rows, settings, extra) => {
   } else {
     metrics.splice(columns.indexOf(dimension[0]), 1)
   }
+
   const meaAxisType = settings.xAxisType || ['normal', 'normal']
   const dimAxisType = settings.yAxisType || 'category'
   const meaAxisName = settings.xAxisName || []

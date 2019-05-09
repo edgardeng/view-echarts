@@ -14,7 +14,7 @@ function getLineXAxis (args) {
   }))
 }
 
-function getLineSeries (args) {
+export function getLineSeries (args) {
   const {
     rows,
     axisSite,

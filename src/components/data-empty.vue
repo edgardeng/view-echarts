@@ -1,11 +1,10 @@
 <template>
-  <div class="v-charts-data-empty">
+  <div class="vi-chart-data-empty">
     暂无数据
   </div>
 </template>
-
 <style>
-.v-charts-data-empty {
+.vi-chart-data-empty {
   position: absolute;
   left: 0;
   right: 0;

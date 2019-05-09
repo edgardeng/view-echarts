@@ -5,15 +5,22 @@
     markPoint: Object
   -->
   <div>
-    <ve-line :data="chartData" :mark-line="markLine"></ve-line>
-    <ve-line :data="chartData" :extend="chartExtend"></ve-line>
-    <ve-line :data="chartData" :mark-point="markPoint"></ve-line>
-    <ve-line :data="chartData" :mark-area="markArea"></ve-line>
+    <h2> Mark Line </h2>
+    <vi-line :data="chartData" :mark-line="markLine"></vi-line>
+    <h2> Mark Line Extend</h2>
+    <vi-line :data="chartData" :extend="chartExtend"></vi-line>
+    <h2> Mark Point </h2>
+    <vi-line :data="chartData" :mark-point="markPoint"></vi-line>
+    <h2> Mark Area </h2>
+    <vi-line :data="chartData" :mark-area="markArea"></vi-line>
+    <h2> Settings</h2>
+    <vi-line :data="chartData" :settings="settings"></vi-line>
+
   </div>
 </template>
 
 <script>
-import { VeLine } from '../../src/index.es'
+import { ViLine } from '../../src/index.es'
 import { LINE_DATA } from './data'
 import 'echarts/lib/component/markLine'
 import 'echarts/lib/component/markPoint'
@@ -61,9 +68,19 @@ export default {
       }
     }
     return {
-      chartData: LINE_DATA
+      chartData: LINE_DATA,
+      settings: {
+        markPoint: {
+          data: [
+            {
+              name: '最大值',
+              type: 'max'
+            }
+          ]
+        }
+      }
     }
   },
-  components: { VeLine }
+  components: { ViLine }
 }
 </script>

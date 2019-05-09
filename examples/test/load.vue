@@ -1,26 +1,31 @@
 <template>
   <div>
     <button @click="load">加载数据</button>
-    <ve-line :data="chartData"></ve-line>
+    <vi-line :data="chartData" :loading="loading" :dataEmpty="empty"></vi-line>
   </div>
 </template>
 
 <script>
-import { VeLine } from '../../src/index.es'
+import { ViLine } from '../../src/index.es'
 import { LINE_DATA } from '../test/data'
 export default {
   data () {
     return {
-      chartData: []
+      chartData: [],
+      loading: false,
+      empty: true
     }
   },
   methods: {
     load () {
+      this.loading = true
+      this.empty = false
       setTimeout(_ => {
+        this.loading = false
         this.chartData = LINE_DATA
-      }, 1000)
+      }, 2000)
     }
   },
-  components: { VeLine }
+  components: { ViLine }
 }
 </script>

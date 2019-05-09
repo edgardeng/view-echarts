@@ -1,4 +1,4 @@
-import { COMMON_DATA } from './data'
+import { COMMON_DATA, PERCENT_DATA } from './data'
 export default {
   name: '条形图',
   type: 'bar',
@@ -6,7 +6,9 @@ export default {
     {
       name: '简单条形图',
       data: COMMON_DATA,
-      settings: {}
+      settings: {
+        showLine: ['年龄']
+      }
     },
     {
       name: '排序条形图',
@@ -39,12 +41,12 @@ export default {
     },
     {
       name: '坐标轴配置',
-      data: COMMON_DATA,
+      data: PERCENT_DATA,
       settings: {
         xAxisType: ['KMB', 'percent'],
-        xAxisName: ['余额', '年龄'],
+        xAxisName: ['余额', '比率'],
         axisSite: {
-          top: ['年龄']
+          top: ['比率']
         }
       }
     },

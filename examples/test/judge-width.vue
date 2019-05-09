@@ -4,13 +4,13 @@
     widthChangeDelay: { type: Number, default: 300 }
   -->
   <div :style="style">
-    <ve-line :data="chartData"></ve-line>
-    <ve-line :data="chartData" judge-width></ve-line>
+    <vi-line :data="chartData"></vi-line>
+    <vi-line :data="chartData" judge-width></vi-line>
   </div>
 </template>
 
 <script>
-import { VeLine } from '../../src/index.es'
+import { ViLine } from '../../src/index.es'
 import { LINE_DATA } from './data'
 export default {
   data () {
@@ -24,6 +24,6 @@ export default {
   mounted () {
     this.style.width = '400px'
   },
-  components: { VeLine }
+  components: { ViLine }
 }
 </script>

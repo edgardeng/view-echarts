@@ -48,3 +48,10 @@ npm i v-charts echarts -S
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
+
+
+ "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-polyfill": "^6.26.0",
+    "@babel/preset-env": "^7.4.4",
+    
+    uglify

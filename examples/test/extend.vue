@@ -3,14 +3,14 @@
     extend: Object
   -->
   <div>
-    <ve-line :data="chartData" :extend="extend"></ve-line>
-    <ve-line :data="chartData" :extend="extend1"></ve-line>
-    <ve-line :data="chartData" :settings="settings" :extend="extend2"></ve-line>
+    <vi-line :data="chartData" :extend="extend"></vi-line>
+    <vi-line :data="chartData" :extend="extend1"></vi-line>
+    <vi-line :data="chartData" :settings="settings" :extend="extend2"></vi-line>
   </div>
 </template>
 
 <script>
-import { VeLine } from '../../src/index.es'
+import { ViLine } from '../../src/index.es'
 import { LINE_DATA } from './data'
 export default {
   data () {
@@ -38,6 +38,6 @@ export default {
       chartData: LINE_DATA
     }
   },
-  components: { VeLine }
+  components: { ViLine }
 }
 </script>
