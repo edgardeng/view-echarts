@@ -49,7 +49,8 @@ export default {
         ]
       },
       settings: {
-        symbol: 'rect'
+        symbol: 'pin',
+        symbolSize: 30
       }
     },
     {

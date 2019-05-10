@@ -40,12 +40,45 @@ function getSeries (args) {
     zoom,
     labelMap,
     scaleLimit,
-    mapGrid
+    mapGrid,
+    mapGeoCoord
   } = args
   const result = []
   const mapBase = {
     type: 'map',
-    mapType: position
+    map: position,
+    itemStyle: {
+      normal: {
+        borderColor: '#fff',
+        borderWidth: 1
+      },
+      emphasis: {
+        areaColor: '#C9E6FF',
+        shadowColor: '#5AB2FE',
+        shadowBlur: 10
+      }
+    },
+  }
+
+  const scatterPoint = {
+    type: 'scatter',
+    coordinateSystem: 'geo',
+    symbol: 'pin',
+    symbolSize: 50,
+    label: {
+      normal: {
+        show: true,
+        formatter: function(value){
+          return value.value[2]
+        },
+        textStyle: { color: '#f0f0f0', fontSize: 9 }
+      }
+    },
+    itemStyle: {
+      normal: {
+        color: '#F62157'
+      }
+    }
   }
 
   metrics.forEach(itemName => {
@@ -79,6 +112,29 @@ function getSeries (args) {
     })
     result.push(itemResult)
   })
+
+
+
+  if (mapGeoCoord) {
+    // scatter
+    metrics.forEach(itemName => {
+      const itemResult = Object.assign({
+        name: labelMap[itemName] != null ? labelMap[itemName] : itemName,
+        data: []
+      }, scatterPoint)
+
+      rows.forEach(row => {
+        let name = row[dimension]
+        let coord = JSON.parse(JSON.stringify(mapGeoCoord[name]))
+        coord.push(row[itemName])
+        itemResult.data.push({
+          name,
+          value: coord
+        })
+      })
+      result.push(itemResult)
+    })
+  }
 
   return result
 }
@@ -152,7 +208,8 @@ export const map = (columns, rows, settings, extra) => {
     beforeRegisterMap,
     beforeRegisterMapOnce,
     mapURLProfix = 'https://unpkg.com/echarts@3.6.2/map/json/',
-    specialAreas = {}
+    specialAreas = {},
+    mapGeoCoord
   } = settings
   let mapOrigin = settings.mapOrigin
   let metrics = columns.slice()
@@ -182,7 +239,8 @@ export const map = (columns, rows, settings, extra) => {
     zoom,
     labelMap,
     scaleLimit,
-    mapGrid
+    mapGrid,
+    mapGeoCoord
   }
   const series = getSeries(seriesParams)
   const registerOptions = {
@@ -205,7 +263,26 @@ export const map = (columns, rows, settings, extra) => {
       mapURLProfix
     }).then(json => {
       registerMap(registerOptions, json)
-      return { series, tooltip, legend }
+      if (mapGeoCoord) {
+        let geo = {
+          map: position,
+          show: true,
+          zoom:1.2,
+          label: {
+            normal: {
+              show: false
+            },
+            emphasis: {
+              show: false
+            }
+          }
+        }
+        let options = { geo, series, tooltip, legend }
+        console.log(options)
+        return options
+      } else {
+        return { series, tooltip, legend }
+      }
     })
   }
 }
