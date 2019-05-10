@@ -22,7 +22,6 @@ export const PERCENT_DATA = {
   ]
 }
 
-
 export const NUMBER_DATA = {
   columns: ['日期', '余额', '比率', '年龄'],
   rows: [

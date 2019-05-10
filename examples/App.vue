@@ -67,7 +67,6 @@ html, body {
       overflow: auto;
       padding: 20px;
       font-size: 14px;
-      background: #09153D;
       p {
         line-height: 22px;
       }

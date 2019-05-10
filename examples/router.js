@@ -6,12 +6,12 @@ Vue.use(Router)
 
 export const TEST_ROUTES = [
   { path: '/columns-rows', name: '测试属性', component: resolve => require(['./test/columns-rows.vue'], resolve) },
-  { path: '/load', name: '加载', component: resolve => require(['./test/load.vue'], resolve) },
-  { path: '/custom-props', name: '属性', component: resolve => require(['./test/custom-props.vue'], resolve) },
-  { path: '/events', name: '事件', component: resolve => require(['./test/events.vue'], resolve) },
-  { path: '/extend', name: 'extend', component: resolve => require(['./test/extend.vue'], resolve) },
-  { path: '/hook', name: 'hook', component: resolve => require(['./test/hook.vue'], resolve) },
-  { path: '/init', name: 'init', component: resolve => require(['./test/init.vue'], resolve) },
+  { path: '/load', name: '加载load', component: resolve => require(['./test/load.vue'], resolve) },
+  { path: '/custom-props', name: '属性props', component: resolve => require(['./test/custom-props.vue'], resolve) },
+  { path: '/events', name: '事件event', component: resolve => require(['./test/events.vue'], resolve) },
+  { path: '/extend', name: '继承extend', component: resolve => require(['./test/extend.vue'], resolve) },
+  { path: '/hook', name: '钩子hook', component: resolve => require(['./test/hook.vue'], resolve) },
+  { path: '/init', name: '初始化init', component: resolve => require(['./test/init.vue'], resolve) },
   { path: '/judge-width', name: 'judge-width', component: resolve => require(['./test/judge-width.vue'], resolve) },
   { path: '/mark', name: 'Mark', component: resolve => require(['./test/mark.vue'], resolve) },
   { path: '/resize', name: 'resize', component: resolve => require(['./test/resize.vue'], resolve) },

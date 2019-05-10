@@ -1,10 +1,11 @@
 <template>
-  <!-- 测试属性
-    extend: Object
-  -->
+  <!-- 测试属性 extend: Object -->
   <div>
+    <h2>属性继承</h2>
     <vi-line :data="chartData" :extend="extend"></vi-line>
+    <h2>系列全继承</h2>
     <vi-line :data="chartData" :extend="extend1"></vi-line>
+    <h2>单个系列继承</h2>
     <vi-line :data="chartData" :settings="settings" :extend="extend2"></vi-line>
   </div>
 </template>
@@ -17,6 +18,35 @@ export default {
     this.extend = {
       series: {
         smooth: false
+      },
+      backgroundColor: '#0a1642',
+      title: {
+        textStyle: {
+          color: '#fefefe'
+        },
+        subtextStyle: {
+          color: '#999999'
+        }
+      },
+      legend: {
+        inactiveColor: '#6e747b',
+        textStyle: {
+          color: '#f0f2f0'
+        }
+      },
+      xAxis: {
+        axisLine: {
+          lineStyle: {
+            color: '#fefefe'
+          }
+        }
+      },
+      yAxis: {
+        axisLine: {
+          lineStyle: {
+            color: '#fefefe'
+          }
+        }
       }
     }
     this.extend1 = {

@@ -36,7 +36,7 @@
     <h2>toolbox</h2>
     <vi-line :data="chartData" :toolbox="toolbox"></vi-line>
     <h2>title</h2>
-    <vi-line :data="chartData" :title="title" :extend="theme"></vi-line>
+    <vi-line :data="chartData" :title="title"></vi-line>
     <h2>others</h2>
     <vi-line
         :data="chartData"
@@ -109,54 +109,6 @@ export default {
     this.graphic = {}
     this.series = {}
     this.textStyle = {}
-    this.theme = {
-      colors: ['#4ea397', '#00c3aa', '#7bd9a5'],
-      backgroundColor: 'rgba(80,0,0,0)',
-      textStyle: {},
-      title: {
-        textStyle: {
-          color: '#66dd00'
-        },
-        subtextStyle: {
-          color: '#999999'
-        }
-      },
-      legend:{
-        textStyle:{
-          color: '#11dddd'
-        }
-      },
-      xAxis: {
-        axisLine: {
-          lineStyle: {
-            color: '#11dddd'
-          }
-        }
-      },
-      yAxis: {
-        axisLine: {
-          lineStyle: {
-            color: '#11dddd'
-          }
-        }
-      },
-      line: {
-        itemStyle: {
-          normal: {
-            borderWidth: 2
-          }
-        },
-        lineStyle: {
-          normal: {
-            width: 3
-          },
-          color: '#66dd00'
-        },
-        symbolSize: 10,
-        symbol: 'emptyCircle',
-        smooth: true
-      }
-    }
     return {
       chartData: LINE_DATA
     }

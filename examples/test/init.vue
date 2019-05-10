@@ -5,11 +5,11 @@
     initOptions: { type: Object, default () { return {} } }
   -->
   <div>
-    theme
+    <h2> theme</h2>
     <vi-line :data="chartData" :theme="theme"></vi-line>
-    themeName
+    <h2> themeName</h2>
     <vi-line :data="chartData" theme-name="test"></vi-line>
-    initOptions svg
+      <h2> initOptions svg</h2>
     <vi-line :data="chartData" :init-options="initOptions"></vi-line>
   </div>
 </template>

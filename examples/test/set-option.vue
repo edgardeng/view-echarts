@@ -25,7 +25,7 @@ export default {
   methods: {
     change () {
       this.chartData.rows.push({
-        '日期': '1/1',
+        '日期': '1/7',
         '访问用户': Math.random() * 1000,
         '下单用户': Math.random() * 1000
       })

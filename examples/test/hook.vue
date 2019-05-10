@@ -18,6 +18,7 @@
       :data="chartData"
       :settings="chartSettings">
     </vi-line>
+
     <button @click="chartSettings = {}">trigger change</button>
   </div>
 </template>
