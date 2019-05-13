@@ -28,6 +28,7 @@
       :change-delay="2000"
       :settings="chartSettings">
     </vi-line>
+
   </div>
 </template>
 
@@ -45,6 +46,19 @@ export default {
     changeSettings () {
       this.timer = Date.now()
       console.log('触发 watch')
+      this.changeLegend()
+    },
+    changeLegend () {
+      this.chartSettings = {
+        legend: {
+          show: true,
+          left: 'right',
+          top: 'top',
+          orient: 'vertical'
+        }
+      }
+    },
+    changeAxis () {
       this.chartSettings = { yAxisType: ['0.0a'] }
     },
     afterConfig () {

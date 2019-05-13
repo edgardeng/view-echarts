@@ -48,6 +48,7 @@ export default {
   props: {
     data: { type: [Object, Array], default () { return {} } },
     settings: { type: Object, default () { return {} } },
+    options: { type: Object },
     width: { type: String, default: 'auto' },
     height: { type: String, default: '400px' },
     beforeConfig: { type: Function },
@@ -187,12 +188,15 @@ export default {
     echartsResize () { this.echarts && this.echarts.resize() },
 
     optionsHandler (options) {
+      debugger
       // legend
-      if (this.legendPosition && options.legend) {
-        options.legend[this.legendPosition] = 10
-        if (~['left', 'right'].indexOf(this.legendPosition)) {
-          options.legend.top = 'middle'
-          options.legend.orient = 'vertical'
+      if (options.legend) {
+        let sLegend = this.settings.legend
+        if (sLegend) {
+          options.legend.show = sLegend.show === undefined ? true : sLegend.show
+          options.legend.top = sLegend.top
+          options.legend.orient = sLegend.orient
+          options.legend.left = sLegend.left
         }
       }
       // color

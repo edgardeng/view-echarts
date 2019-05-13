@@ -57,7 +57,7 @@ function getSeries (args) {
         shadowColor: '#5AB2FE',
         shadowBlur: 10
       }
-    },
+    }
   }
 
   const scatterPoint = {
@@ -68,7 +68,7 @@ function getSeries (args) {
     label: {
       normal: {
         show: true,
-        formatter: function(value){
+        formatter: function (value) {
           return value.value[2]
         },
         textStyle: { color: '#f0f0f0', fontSize: 9 }
@@ -112,8 +112,6 @@ function getSeries (args) {
     })
     result.push(itemResult)
   })
-
-
 
   if (mapGeoCoord) {
     // scatter
@@ -267,7 +265,7 @@ export const map = (columns, rows, settings, extra) => {
         let geo = {
           map: position,
           show: true,
-          zoom:1.2,
+          zoom: 1.2,
           label: {
             normal: {
               show: false
