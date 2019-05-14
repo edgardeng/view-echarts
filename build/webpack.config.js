@@ -3,14 +3,17 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
+
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
+console.log(webpack.version)
+
 module.exports = {
   entry: './examples/main.js',
-  mode: 'development',
   devtool: 'source-map',
+  // mode: 'development',
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: 'index.js'
@@ -23,8 +26,11 @@ module.exports = {
   },
   devServer: {
     port: '8099',
+    // clientLogLevel: 'warning',
+    compress: true,
+    inline: true,
     hot: true,
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: false,
     stats: 'errors-only',
     open: true
   },
@@ -63,12 +69,14 @@ module.exports = {
     ]
   },
   plugins: [
+    new VueLoaderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
+    new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: resolve('./examples/index.html'),
       inject: true
-    }),
-    new VueLoaderPlugin()
+    })
   ]
 }
