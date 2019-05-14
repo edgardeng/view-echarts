@@ -147,9 +147,32 @@ export default {
   },
 
   methods: {
+    convertData () {
+      let data
+      let dataRows = this.data.rows
+      let columns = this.data.columns
+      if (dataRows && dataRows.length > 0 && isArray(dataRows[0])) {
+        // change [[]] to [{}]
+        let rows = []
+        let sizeC = columns.length
+        for (let row of dataRows) {
+          let json = {}
+          for (let i in row) {
+            if (i < sizeC) {
+              json[columns[i]] = row[i]
+            }
+          }
+          rows.push(json)
+        }
+        data = { columns, rows }
+        console.log(data)
+        return data
+      }
+      return this.data
+    },
     dataHandler () {
       if (!this.chartHandler) return
-      let data = this.data
+      let data = this.convertData()
       const { columns = [], rows = [] } = data
       const extra = {
         tooltipVisible: this.tooltipVisible,
@@ -175,9 +198,7 @@ export default {
 
     resize () {
       if (!this.cancelResizeCheck) {
-        if (this.$el &&
-          this.$el.clientWidth &&
-          this.$el.clientHeight) {
+        if (this.$el && this.$el.clientWidth && this.$el.clientHeight) {
           this.echartsResize()
         }
       } else {
@@ -188,7 +209,6 @@ export default {
     echartsResize () { this.echarts && this.echarts.resize() },
 
     optionsHandler (options) {
-      debugger
       // legend
       if (options.legend) {
         let sLegend = this.settings.legend

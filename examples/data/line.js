@@ -1,4 +1,4 @@
-import { COMMON_DATA, PERCENT_DATA } from './data'
+import { COMMON_DATA, PERCENT_DATA, SIMPLE_DATA } from './data'
 
 export default {
   name: '折线图',
@@ -6,7 +6,7 @@ export default {
   data: [
     {
       name: '简单折线图',
-      data: COMMON_DATA,
+      data: SIMPLE_DATA,
       settings: {}
     },
     {
