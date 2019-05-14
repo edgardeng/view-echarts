@@ -44,20 +44,27 @@ function getSeries (args) {
     mapGeoCoord
   } = args
   const result = []
+
   const mapBase = {
     type: 'map',
     map: position,
     itemStyle: {
       normal: {
+        areaColor: '#C9E6FF',
         borderColor: '#fff',
-        borderWidth: 1
+        borderWidth: 1,
+        shadowColor: '#5AB2FE',
+        shadowBlur: 5
       },
       emphasis: {
-        areaColor: '#C9E6FF',
-        shadowColor: '#5AB2FE',
+        areaColor: '#5AB2FE',
+        shadowColor: '#2264d0',
         shadowBlur: 10
       }
     }
+  }
+  if (mapGeoCoord) {
+    mapBase.showLegendSymbol = false
   }
 
   const scatterPoint = {
@@ -72,11 +79,6 @@ function getSeries (args) {
           return value.value[2]
         },
         textStyle: { color: '#f0f0f0', fontSize: 9 }
-      }
-    },
-    itemStyle: {
-      normal: {
-        color: '#F62157'
       }
     }
   }
@@ -93,6 +95,8 @@ function getSeries (args) {
       zoom,
       scaleLimit
     }, mapBase)
+    if (itemResult.scaleLimit === undefined) delete itemResult.scaleLimit
+    if (itemResult.aspectScale === undefined) delete itemResult.aspectScale
 
     if (mapGrid) {
       Object.keys(mapGrid).forEach(key => {
@@ -261,26 +265,15 @@ export const map = (columns, rows, settings, extra) => {
       mapURLProfix
     }).then(json => {
       registerMap(registerOptions, json)
+      let options = { series, tooltip, legend }
       if (mapGeoCoord) {
-        let geo = {
+        options.geo = {
           map: position,
-          show: true,
-          zoom: 1.2,
-          label: {
-            normal: {
-              show: false
-            },
-            emphasis: {
-              show: false
-            }
-          }
+          show: true
         }
-        let options = { geo, series, tooltip, legend }
         console.log(options)
-        return options
-      } else {
-        return { series, tooltip, legend }
       }
+      return options
     })
   }
 }

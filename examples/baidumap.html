@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <style type="text/css">
+    body, html{width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+    #allmap {height:800px; width: 100%;}
+    #control{width:100%;}
+  </style>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Z5S0DmA3cDZwIr20ZBAnINPxkjerHTMx"></script>
+  <title>设置线、面可编辑</title>
+</head>
+<body>
+<div id="allmap"></div>
+<div id="control">
+  <button onclick = "polygon.enableEditing();">开启线、面编辑功能</button>
+  <button onclick = "console.log(polygon.getPath())">线面信息</button>
+  <button onclick = "polygon.disableEditing();">关闭线、面编辑功能</button>
+  <button onclick = "start()">开始</button>
+  <button onclick = "end()">结束</button>
+  <button onclick = "build()">生成</button>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+  // 百度地图API功能
+  var option = {
+    enableMapClick: false
+  }
+  var enableEdit = false
+
+  var clickPoints = []
+
+  var map = new BMap.Map("allmap", option);
+  map.centerAndZoom(new BMap.Point(121.394766,31.265851), 16);
+  map.enableScrollWheelZoom();
+
+  var top_right_navigation = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL}); //右上角，仅包含平移和缩放按钮
+  map.addControl(top_right_navigation);
+
+
+  var clickLine =  new BMap.Polyline([], {strokeColor:"blue", strokeWeight:2, strokeOpacity:0.5});   //创建折线
+  map.addOverlay(clickLine);
+
+  map.addEventListener("click",function(e){
+    if (enableEdit) return
+    let p = new BMap.Point(e.point.lng, e.point.lat)
+    console.log(p.lng + ", " + p.lat)
+    clickPoints.push(p)
+    clickLine.setPath(clickPoints)
+  });
+
+    // var polyline = new BMap.Polyline([
+  //   new BMap.Point(116.399, 39.910),
+  //   new BMap.Point(116.405, 39.920),
+  //   new BMap.Point(116.423493, 39.907445)
+  // ], {strokeColor:"blue", strokeWeight:2, strokeOpacity:0.5});   //创建折线
+  // map.addOverlay(polyline);   //增加折线
+
+  var polygon = new BMap.Polygon([　
+  ], {strokeColor:"blue", strokeWeight:2, strokeOpacity:0.5});  //创建多边形
+  map.addOverlay(polygon);   //增加多边形
+
+  function start() {
+    console.log('start')
+    clickPoints = []
+  }
+
+  function end() {
+    var points = []
+    let coordinates = []
+    for (let p of clickPoints) {
+      coordinates.push([p.lng, p.lat])
+      let pot = new BMap.Point(p.lng, p.lat)
+      points.push(pot)
+    }
+    coordinates.push([clickPoints[0].lng, clickPoints[0].lat])
+    console.log(JSON.stringify(coordinates))
+    var poly = new BMap.Polygon(points, {strokeColor:"blue", strokeWeight:2, strokeOpacity:0.5});  //创建多边形
+    map.addOverlay(poly);   //增加多边形
+    console.log('end')
+    clickPoints = []
+  }
+
+  function build() {
+    let coordinates = []
+    let path = polygon.getPath()
+    for (let p of path) {
+      coordinates.push([p.lng, p.lat])
+    }
+    console.log(JSON.stringify(coordinates))
+
+    polygon.disableEditing();
+    enableEdit = false
+
+  }
+
+
+</script>
+

@@ -6,7 +6,8 @@
         <component
           :is="`vi-${innerType}`"
           :data="d.data"
-          :settings="d.settings">
+          :settings="d.settings"
+        >
         </component>
       </div>
       <div class="code-view">
@@ -111,6 +112,7 @@ export default {
     padding: 15px;
 
     .chart-part {
+      max-width: 900px;
       flex: 1;
     }
 

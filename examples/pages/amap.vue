@@ -1,16 +1,16 @@
 <template>
   <div>
-    <ve-amap
+    <vi-amap
       :settings="chartSettings"
       :series="chartSeries"
       :after-set-option-once="getMap"
       :tooltip="{ show: true }">
-    </ve-amap>
+    </vi-amap>
   </div>
 </template>
 
 <script>
-import VeAmap from '../../src/packages/amap'
+import ViAmap from '../../src/packages/amap'
 export default {
   name: 'amap',
   data () {
@@ -42,6 +42,6 @@ export default {
     }
   },
 
-  components: { VeAmap }
+  components: { ViAmap }
 }
 </script>
