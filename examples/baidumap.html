@@ -51,6 +51,9 @@
     clickLine.setPath(clickPoints)
   });
 
+  var geoCollection = {type: 'FeatureCollection', features: []}
+
+
     // var polyline = new BMap.Polyline([
   //   new BMap.Point(116.399, 39.910),
   //   new BMap.Point(116.405, 39.920),
@@ -81,6 +84,19 @@
     map.addOverlay(poly);   //增加多边形
     console.log('end')
     clickPoints = []
+    let feature = {
+      type: 'Feature',
+      properties: {
+        name: 'a'
+      },
+      geometry: {
+        type: 'Polygon',
+        coordinates: []
+      }
+    }
+    feature.geometry.coordinates.push(coordinates)
+    geoCollection.features.push(feature)
+
   }
 
   function build() {
@@ -90,6 +106,7 @@
       coordinates.push([p.lng, p.lat])
     }
     console.log(JSON.stringify(coordinates))
+    console.log(JSON.stringify(geoCollection))
 
     polygon.disableEditing();
     enableEdit = false
