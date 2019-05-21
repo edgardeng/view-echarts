@@ -3,3 +3,4 @@ examples/
 src/
 static/
 .idea/
+dist/
