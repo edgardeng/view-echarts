@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { ViLine } from '../../src/index.es'
+import ViLine from '../../lib/line/index.common'
 import { LINE_DATA } from '../test/data'
 export default {
   data () {

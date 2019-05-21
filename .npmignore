@@ -1,0 +1,5 @@
+build/
+examples/
+src/
+static/
+.idea/

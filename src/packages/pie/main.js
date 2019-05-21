@@ -1,5 +1,5 @@
-import { itemPoint } from '../../constants'
-import { getFormated, setArrayValue } from '../../utils'
+import { itemPoint } from '../constants'
+import { getFormated, setArrayValue } from '../utils'
 import { cloneDeep } from 'utils-lite'
 
 const pieRadius = 100

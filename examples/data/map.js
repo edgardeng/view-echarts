@@ -199,7 +199,7 @@ export default {
         ]
       },
       settings: {
-        positionJsonLink: 'http://localhost:8090/static/jiezheng2.json',
+        positionJsonLink: 'http://localhost:8090/static/jz7.json',
         position: 'jiedao',
         mapGeoCoord: {
           '第一网格': [121.3829183578491,

@@ -1,6 +1,6 @@
 import { isArray } from 'utils-lite'
-import { itemPoint } from '../../constants'
-import { getFormated } from '../../utils'
+import { itemPoint } from '../constants'
+import { getFormated } from '../utils'
 import { line } from '../line/main'
 
 function getScatterLegend (dataLabels, legendName) {

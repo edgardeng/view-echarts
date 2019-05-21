@@ -30,7 +30,14 @@ Chart components based on Vuejs 2.x and Echarts
 
 Modern browsers and Internet Explorer 10+, include pc and mobile browser.
 
-## Develop
+## Install
+
+```
+npm i npm install view-echarts echarts -S
+```
+
+
+## how to test
 
 ```
 git clone https://github.com/edgardeng/view-echarts.git
@@ -39,19 +46,13 @@ npm install
 npm run dev
 ```
 
-## Install
+## how to package
+```
+  npm run build
+```
 
-```
-npm i v-charts echarts -S
-```
+
 
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
-
-
- "babel-plugin-transform-object-assign": "^6.22.0",
-    "babel-polyfill": "^6.26.0",
-    "@babel/preset-env": "^7.4.4",
-    
-    uglify

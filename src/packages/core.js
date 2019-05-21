@@ -12,17 +12,17 @@ import {
   isEqual
 } from 'utils-lite'
 
-import Loading from './components/loading'
-import DataEmpty from './components/data-empty'
+import Loading from '../components/loading'
+import DataEmpty from '../components/data-empty'
 import {
   DEFAULT_COLORS,
   DEFAULT_THEME,
   STATIC_PROPS,
   ECHARTS_SETTINGS
 } from './constants'
-import setExtend from './modules/extend'
-import setMark from './modules/mark'
-import setAnimation from './modules/animation'
+import setExtend from '../modules/extend'
+import setMark from '../modules/mark'
+import setAnimation from '../modules/animation'
 
 export default {
   render (h) {

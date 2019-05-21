@@ -1,5 +1,5 @@
-import { getFormated } from '../../utils'
-import { itemPoint } from '../../constants'
+import { getFormated } from '../utils'
+import { itemPoint } from '../constants'
 
 function getTooltip (args) {
   const {

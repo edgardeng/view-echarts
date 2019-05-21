@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { VeLine } from '../../src/index.es'
+import { VeLine } from '../../src/packages/index'
 import { LINE_DATA } from '../test/data'
 export default {
   data () {

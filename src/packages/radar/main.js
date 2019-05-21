@@ -1,5 +1,5 @@
-import { itemPoint } from '../../constants'
-import { getFormated } from '../../utils'
+import { itemPoint } from '../constants'
+import { getFormated } from '../utils'
 
 function getRadarLegend (rows, dimension, legendName) {
   let legendData = rows.map(row => row[dimension])

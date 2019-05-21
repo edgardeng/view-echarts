@@ -1,5 +1,5 @@
-import { itemPoint } from '../../constants'
-import { getFormated } from '../../utils'
+import { itemPoint } from '../constants'
+import { getFormated } from '../utils'
 import { isArray } from 'utils-lite'
 
 const DEFAULT_MA = [5, 10, 20, 30]

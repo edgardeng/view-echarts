@@ -1,5 +1,5 @@
-import { itemPoint, HEAT_MAP_COLOR, HEAT_BMAP_COLOR } from '../../constants'
-import { getBmap, getAmap, getMapJSON, getFormated } from '../../utils'
+import { itemPoint, HEAT_MAP_COLOR, HEAT_BMAP_COLOR } from '../constants'
+import { getBmap, getAmap, getMapJSON, getFormated } from '../utils'
 import echarts from 'echarts/lib/echarts'
 
 function getAxisList (rows, label) {

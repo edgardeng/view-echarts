@@ -1,4 +1,4 @@
-import { getFormated } from '../../utils'
+import { getFormated } from '../utils'
 import { isObject } from 'utils-lite'
 
 function getTooltip (args) {

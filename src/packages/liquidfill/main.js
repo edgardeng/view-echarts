@@ -5,7 +5,7 @@ import {
 
 import {
   getFormated
-} from '../../utils'
+} from '../utils'
 
 function getTooltip (args) {
   const {

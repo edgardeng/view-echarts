@@ -1,4 +1,4 @@
-import { getBmap } from '../../utils'
+import { getBmap } from '../utils'
 
 export const bmap = (_, __, settings, extra) => {
   const {

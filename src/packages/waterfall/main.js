@@ -1,4 +1,4 @@
-import { getFormated } from '../../utils'
+import { getFormated } from '../utils'
 
 function getWaterfallTooltip (dataType, digit) {
   return {

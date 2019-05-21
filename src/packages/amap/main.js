@@ -1,4 +1,4 @@
-import { getAmap } from '../../utils'
+import { getAmap } from '../utils'
 
 export const amap = (_, __, settings, extra) => {
   const {

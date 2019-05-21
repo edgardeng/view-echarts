@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { ViLine } from '../../src/index.es'
+import { ViLine } from '../../src/packages/index'
 import { LINE_DATA } from './data'
 import echarts from 'echarts/lib/echarts'
 import 'zrender/lib/svg/svg'

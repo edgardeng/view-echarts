@@ -1,4 +1,4 @@
-import { getFormated, getStackMap } from '../../utils'
+import { getFormated, getStackMap } from '../utils'
 import { isArray } from 'utils-lite'
 
 function getLineXAxis (args) {

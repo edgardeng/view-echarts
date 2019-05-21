@@ -1,5 +1,5 @@
-import { itemPoint } from '../../constants'
-import { getFormated, getStackMap } from '../../utils'
+import { itemPoint } from '../constants'
+import { getFormated, getStackMap } from '../utils'
 import { set, get, cloneDeep } from 'utils-lite'
 // default opacity of bar while dim-axis type is 'value'
 const VALUE_AXIS_OPACITY = 0.5

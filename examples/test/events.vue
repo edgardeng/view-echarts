@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { ViLine } from '../../src/index.es'
+import { ViLine } from '../../src/packages/index'
 import { LINE_DATA } from './data'
 export default {
   data () {

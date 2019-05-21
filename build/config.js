@@ -7,11 +7,11 @@ module.exports = {
   ],
   addons: [
     {
-      min: false,
+      min: true,
       type: 'es',
-      suffix: '.esm.js',
+      suffix: '.min.js',
       globalName: '',
-      src: 'src/index.es.js',
+      src: 'src/packages/index.js',
       dist: 'lib/index'
     },
     {
@@ -19,7 +19,7 @@ module.exports = {
       type: 'cjs',
       suffix: '.js',
       globalName: '',
-      src: 'src/core.js',
+      src: 'src/packages/core.js',
       dist: 'lib/core'
     },
     {
@@ -27,7 +27,7 @@ module.exports = {
       type: 'cjs',
       suffix: '.js',
       globalName: '',
-      src: 'src/utils.js',
+      src: 'src/packages/utils.js',
       dist: 'lib/utils'
     },
     {
@@ -35,7 +35,7 @@ module.exports = {
       type: 'cjs',
       suffix: '.js',
       globalName: '',
-      src: 'src/constants.js',
+      src: 'src/packages/constants.js',
       dist: 'lib/constants'
     }
   ]
