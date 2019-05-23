@@ -5,6 +5,7 @@ const resolve = require('rollup-plugin-node-resolve')
 const babel = require('rollup-plugin-babel')
 const eslint = require('rollup-plugin-eslint')
 const {terser} = require('rollup-plugin-terser')
+// import css from 'rollup-plugin-css-only'
 
 const postcss = require('rollup-plugin-postcss')
 const autoprefixer = require('autoprefixer')
@@ -41,16 +42,23 @@ async function rollupFn(item) {
   try {
 
     const {min, dist, suffix, src: input, type: format, globalName: name} = item
-    const vueSettings = min
-      ? {css: 'lib/style.min.css', postcss: [autoprefixer, cssnano]}
-      : {css: 'lib/style.css', postcss: [autoprefixer]}
     const plugins = [
       eslint(),
       commonjs(),
-      postcss(),
-      vue(vueSettings),
+      postcss({
+        plugins: [ autoprefixer, cssnano ],
+        extract: 'lib/style.min.css' // 输出路径
+      }),
+      vue({
+        // extract styles in a .css file.
+        css: false
+      }),
       resolve({extensions: ['.js', '.vue']}),
-      babel({plugins: ['external-helpers']})
+      babel({
+        plugins: ['external-helpers'],
+        exclude: 'node_modules/**',
+        runtimeHelpers: true
+      })
     ]
     // if (min) plugins.push(uglify({}, minify))
     if (min) {
