@@ -25,7 +25,6 @@ const config = {
     assetsSubDirectory: 'static',
     assetsPublicPath: './',
     productionSourceMap: true,
-    // https://webpack.js.org/configuration/devtool/#production
     devtool: '#source-map',
     productionGzip: false,
     productionGzipExtensions: ['js', 'css']
@@ -41,7 +40,7 @@ const vueLoaderConfig = {
     extract: isProduction
   }),
   cssSourceMap: sourceMapEnabled,
-  // cacheBusting: config.dev.cacheBusting,
+  cacheBusting: true,
   transformToRequire: {
     video: ['src', 'poster'],
     source: 'src',

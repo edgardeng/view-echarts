@@ -6,7 +6,6 @@ const packageConfig = require('../package.json')
 
 exports.assetsPath = function (_path) {
   const assetsSubDirectory = 'static'
-
   return path.posix.join(assetsSubDirectory, _path)
 }
 
