@@ -16,7 +16,7 @@ export default {
   data () {
     return {
       chartSettings: {
-        key: '08ec82355a34cc2f501fd51139227f32',
+        key: '**',
         v: '1.4.3',
         amap: {
           resizeEnable: true,

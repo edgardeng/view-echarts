@@ -41,7 +41,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="scss">
 .component-sidebar {
   height: 100%;
 

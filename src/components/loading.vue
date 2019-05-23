@@ -15,7 +15,7 @@
         </div>
     </div>
 </template>
-<style>
+<style lang="scss">
     .vi-chart-loading {
         position: absolute;
         left: 0;

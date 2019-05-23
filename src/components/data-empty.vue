@@ -3,7 +3,7 @@
     暂无数据
   </div>
 </template>
-<style>
+<style lang="scss">
 .vi-chart-data-empty {
   position: absolute;
   left: 0;

@@ -97,7 +97,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="scss">
 .page-item-test {
   h3, p {
     margin: 0;

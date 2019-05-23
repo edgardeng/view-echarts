@@ -16,6 +16,7 @@ import Sidebar from './components/sidebar'
 export default {
   name: 'App',
   created () {
+    console.log('app create!')
   },
   components: {
     Sidebar
@@ -23,7 +24,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="scss">
 * {
   padding: 0;
   margin: 0;

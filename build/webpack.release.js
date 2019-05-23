@@ -5,10 +5,12 @@ const webpack = require('webpack')
 
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+// const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -22,15 +24,13 @@ const config = {
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
     assetsPublicPath: './',
-    productionSourceMap: false,
+    productionSourceMap: true,
     // https://webpack.js.org/configuration/devtool/#production
     devtool: '#source-map',
     productionGzip: false,
-    productionGzipExtensions: ['js', 'css'],
-    bundleAnalyzerReport: process.env.npm_config_report
+    productionGzipExtensions: ['js', 'css']
   }
 }
-
 
 const isProduction = true
 const sourceMapEnabled =config.build.productionSourceMap
@@ -50,6 +50,52 @@ const vueLoaderConfig = {
   }
 }
 
+let moduleRules = [
+  {
+      test: /\.vue$/,
+      loader: 'vue-loader',
+      options: vueLoaderConfig
+    },
+    {
+      test: /\.js$/,
+      loader: 'babel-loader?cacheDirectory=true',
+      exclude: '/node_modules/',
+      include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+    },
+    {
+      test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        name: utils.assetsPath('img/[name].[hash:7].[ext]')
+      }
+    },
+    {
+      test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        name: utils.assetsPath('media/[name].[hash:7].[ext]')
+      }
+    },
+    {
+      test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+      }
+    }
+  ]
+
+moduleRules = moduleRules.concat(utils.styleLoaders({
+  sourceMap: config.build.productionSourceMap,
+  extract: true,
+  usePostCSS: true
+}))
+// console.log(moduleRules)
+
+
 const webpackConfig = {
   context: path.resolve(__dirname, '../'),
   entry: {
@@ -65,62 +111,15 @@ const webpackConfig = {
     extensions: ['.js', '.vue', '.json'],
     modules: [
       resolve('src'),
+      resolve('examples'),
       resolve('node_modules')
-    ],
-    alias: {
-      'vue$': 'vue/dist/vue.common.js',
-      'src': resolve('src'),
-      'assets': resolve('src/assets'),
-      'components': resolve('src/components'),
-      'page': resolve('src/page'),
-      '@': resolve('src')
-    }
-  },
-  module: {
-    rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: vueLoaderConfig
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader?cacheDirectory=true',
-        exclude: '/node_modules/',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
-        }
-      },
-      {
-        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: utils.assetsPath('media/[name].[hash:7].[ext]')
-        }
-      },
-      {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
-        }
-      }
     ]
   },
+  module: {
+    rules: moduleRules
+  },
   node: {
-    // prevent webpack from injecting useless setImmediate polyfill because Vue
-    // source contains it (although only uses it if it's native).
     setImmediate: false,
-    // prevent webpack from injecting mocks to Node native modules
-    // that does not make sense for the client
     dgram: 'empty',
     fs: 'empty',
     net: 'empty',
@@ -132,76 +131,61 @@ const webpackConfig = {
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
 
   optimization: {
-    runtimeChunk: {
-      name: "manifest"
-    },
     splitChunks: {
+      chunks: 'async',
+      minSize: 30000,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      automaticNameDelimiter: '~',
+      name: true,
       cacheGroups: {
-        vendor: {
+        vendors: {
           test: /[\\/]node_modules[\\/]/,
-          // test: path.resolve(__dirname, "node_modules"),
-          chunks: 'initial',
-          name: 'vendor'
+          priority: -10
         },
-        'async-vendor': {
-          test: /[\\/]node_modules[\\/]/,
-          // test: path.resolve(__dirname, "node_modules"),
-          chunks: 'async',
-          name: 'async-vendor'
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
         }
       }
-    }
+    },
+    minimizer: [
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          compress: {
+            warnings: false
+          }
+        },
+        sourceMap: config.build.productionSourceMap,
+        cache: true,
+        parallel: true
+      }),
+      new OptimizeCSSPlugin({
+        cssProcessorOptions: config.build.productionSourceMap
+          ? { safe: true, map: { inline: false } }
+          : { safe: true }
+      })
+    ]
   },
   plugins: [
     new VueLoaderPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': 'production'
-    }),
-    new UglifyJsPlugin({
-      uglifyOptions: {
-        compress: {
-          warnings: false
-        }
-      },
-      sourceMap: config.build.productionSourceMap,
-      parallel: true
-    }),
-    // extract css into its own file
-    new ExtractTextPlugin({
+    new MiniCssExtractPlugin({
       filename: utils.assetsPath('css/[name].[hash].css'),
-      allChunks: true,
+      chunkFilename: utils.assetsPath('css/[id].[hash].css'),  // use contenthash *
     }),
-    new OptimizeCSSPlugin({
-      cssProcessorOptions: config.build.productionSourceMap
-        ? { safe: true, map: { inline: false } }
-        : { safe: true }
-    }),
-    // generate dist index.html with correct asset hash for caching.
-    // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: config.build.index,
-      template: 'index.html',
+      template: 'examples/index.html',
       inject: true,
-      dll: [],
-      // dll: (function () {
-      //   let max = 3
-      //   let res = []
-      //   for (let i = 0; i < max; i++) {
-      //     const dllName = require(path.resolve(__dirname, `../dll/vendor${i}-manifest.json`)).name.split('_')
-      //     res.push(`./static/js/${dllName[0]}.${dllName[1]}.dll.js`)
-      //   }
-      //   return res
-      // })(),
       minify: {
         removeComments: true,
         collapseWhitespace: true,
         removeAttributeQuotes: true
-        // more options:
-        // https://github.com/kangax/html-minifier#options-quick-reference
       },
-      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency'
+      chunksSortMode: 'none'
     }),
     // keep module.id stable when vendor modules does not change
     new webpack.HashedModuleIdsPlugin(),
@@ -211,15 +195,10 @@ const webpackConfig = {
     // copy custom static assets
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../static'),
+        from: path.resolve(__dirname, '../examples/static'),
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
-      // {
-      //   from: path.resolve(__dirname, '../dll/static'),
-      //   to: config.build.assetsSubDirectory,
-      //   ignore: ['.*']
-      // }
     ])
   ]
 }
@@ -242,9 +221,5 @@ if (config.build.productionGzip) {
   )
 }
 
-if (config.build.bundleAnalyzerReport) {
-  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-  webpackConfig.plugins.push(new BundleAnalyzerPlugin())
-}
 
 module.exports = webpackConfig
