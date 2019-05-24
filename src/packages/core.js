@@ -228,6 +228,12 @@ export default {
       // animation
       if (this.animation) setAnimation(options, this.animation)
       // marks
+      if (!this.markArea && !this.markLine && !this.markPoint) {
+        this.markArea = this.settings.markArea
+        this.markLine = this.settings.markLine
+        this.markPoint = this.settings.markPoint
+      }
+      // marks
       if (this.markArea || this.markLine || this.markPoint) {
         const marks = {
           markArea: this.markArea,
@@ -241,6 +247,7 @@ export default {
           setMark(series, marks)
         }
       }
+
       // change inited echarts settings
       if (this.extend) setExtend(options, this.extend)
       if (this.afterConfig) options = this.afterConfig(options)

@@ -29,8 +29,16 @@ import 'echarts/lib/component/markArea'
 export default {
   data () {
     this.markLine = {
+      label: {
+        position: 'start'
+      },
+      lineStyle: {
+        color: '#f01010'
+      },
       data: [
-        { name: '平均线', type: 'average' }
+        // { name: '平均值', type: 'average' },
+        { name: '6000线', yAxis: 3500 }
+        // { coord:['1/2', 6000] }
       ]
     }
     this.markPoint = {
@@ -75,6 +83,10 @@ export default {
             {
               name: '最大值',
               type: 'max'
+            },
+            {
+              name: '最小值',
+              type: 'min'
             }
           ]
         }
