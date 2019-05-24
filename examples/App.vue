@@ -15,9 +15,6 @@
 import Sidebar from './components/sidebar'
 export default {
   name: 'App',
-  created () {
-    console.log('app create!')
-  },
   components: {
     Sidebar
   }
