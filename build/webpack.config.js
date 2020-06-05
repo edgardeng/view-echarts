@@ -96,7 +96,7 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: resolve('./examples/index.html'),
+      template: resolve('../examples/index.html'),
       inject: true
     }),
     new CopyWebpackPlugin([

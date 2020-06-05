@@ -17,7 +17,7 @@
     "url": "https://github.com/edgardeng/view-echarts.git/issues"
   },
   "scripts": {
-    "dev": "webpack-dev-server --progress --config ./build/webpack.config.js",
+    "dev": "webpack-dev-server --inline --progress --config ./build/webpack.config.js",
     "release": "node build/release.js",
     "build": "rm -f -r lib && node build/rollup.config.js",
     "buildOnly": "rm -f -r lib && node build/rollup.config.js",
