@@ -1,4 +1,4 @@
-import { set, isArray, isObject } from 'utils-lite'
+import { set, isArray, isObject } from '@/utils/types'
 
 export default function (options, extend) {
   Object.keys(extend).forEach(attr => {
