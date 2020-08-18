@@ -42,7 +42,7 @@ module.exports = {
   },
   devServer: {
     port: config.dev.port,
-    // clientLogLevel: 'warning',
+    clientLogLevel: 'warning',
     compress: true,
     inline: true,
     hot: true,
