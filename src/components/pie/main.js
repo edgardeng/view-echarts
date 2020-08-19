@@ -1,6 +1,6 @@
 import { itemPoint } from '../constants'
 import { getFormated, setArrayValue } from '../utils'
-import { cloneDeep } from 'utils-lite'
+import { cloneDeep } from '../types'
 
 const pieRadius = 100
 const ringRadius = [80, 100]
@@ -28,9 +28,9 @@ function getPieSeries (args) {
     itemStyle
   } = args
 
-  let series = []
-  let levelTemp = {}
-  let rowsTemp = []
+  const series = []
+  const levelTemp = {}
+  const rowsTemp = []
   if (level) {
     level.forEach((levelItems, index) => {
       levelItems.forEach(item => { setArrayValue(levelTemp, item, index) })
@@ -46,16 +46,16 @@ function getPieSeries (args) {
   } else {
     rowsTemp.push(innerRows)
   }
-  let seriesBase = {
+  const seriesBase = {
     type: 'pie',
     selectedMode,
     hoverAnimation,
     roseType,
     center: ['50%', offsetY]
   }
-  let rowsTempLength = rowsTemp.length
+  const rowsTempLength = rowsTemp.length
   rowsTemp.forEach((dataRows, index) => {
-    let seriesItem = Object.assign({ data: [] }, seriesBase)
+    const seriesItem = Object.assign({ data: [] }, seriesBase)
     const centerWidth = radius / rowsTempLength
     if (!index) {
       seriesItem.radius = isRing ? radius : centerWidth
@@ -78,7 +78,7 @@ function getPieSeries (args) {
           show: true,
           position: rowsTempLength > 1 && index === 0 ? 'inner' : 'outside',
           formatter (item) {
-            let tpl = []
+            const tpl = []
             tpl.push(`${item.name}:`)
             tpl.push(getFormated(item.value, dataType, digit))
             tpl.push(`(${item.percent}%)`)
@@ -155,7 +155,7 @@ function getPieTooltip (args) {
   }).slice(limitShowNum, innerRows.length)
   return {
     formatter (item) {
-      let tpl = []
+      const tpl = []
       tpl.push(itemPoint(item.color))
       if (limitShowNum && item.name === '其他') {
         tpl.push('其他:')

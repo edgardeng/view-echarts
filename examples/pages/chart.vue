@@ -24,32 +24,31 @@
   </div>
 </template>
 
-<script type="text/ecmascript-6">
-import ViBar from '../../src/packages/bar'
-import ViLine from '../../src/packages/line'
-import ViHistogram from '../../src/packages/histogram'
-import ViPie from '../../src/packages/pie'
-import ViRing from '../../src/packages/ring'
-import ViRadar from '../../src/packages/radar'
-import ViChart from '../../src/packages/chart'
-import ViMap from '../../src/packages/map'
-import ViScatter from '../../src/packages/scatter'
-import ViGauge from '../../src/packages/gauge'
+<script lang="ts">
+import ViBar from '@/components/bar'
+import ViLine from '@/components/line'
+import ViHistogram from '@/components/histogram'
+import ViPie from '@/components/pie'
+import ViRing from '@/components/ring'
+// import ViRadar from '@/components/radar'
+// import ViChart from '@/components/chart'
+// import ViMap from '@/components/map'
+// import ViScatter from '@/components/scatter'
+// import ViGauge from '@/components/gauge'
 
-// import ViSankey from '../../src/packages/sankey'
-// import ViHeatmap from '../../src/packages/heatmap'
-// import ViScatter from '../../src/packages/scatter'
-// import ViCandle from '../../src/packages/candle'
-// import ViTree from '../../src/packages/tree'
-// import ViLiquidfill from '../../src/packages/liquidfill'
-// import ViWordcloud from '../../src/packages/wordcloud'
-// import ViWaterfall from '../../src/packages/waterfall'
-// import ViFunnel from '../../src/packages/funnel'
+// import ViSankey from '@/components/sankey'
+// import ViHeatmap from '@/components/heatmap'
+// import ViScatter from '@/components/scatter'
+// import ViCandle from '@/components/candle'
+// import ViTree from '@/components/tree'
+// import ViLiquidfill from '@/components/liquidfill'
+// import ViWordcloud from '@/components/wordcloud'
+// import ViWaterfall from '@/components/waterfall'
+// import ViFunnel from '@/components/funnel'
 import CHART_DATA from '../data'
 
 export default {
   name: 'Item',
-
   data () {
     return {
       chartData: [],
@@ -57,7 +56,6 @@ export default {
       innerType: null
     }
   },
-
   methods: {
     init () {
       this.type = this.$route.params.type
@@ -65,25 +63,22 @@ export default {
       this.innerType = CHART_DATA[this.type].type
     }
   },
-
   created () { this.init() },
-
   watch: {
     $route () {
       this.init()
     }
   },
-
   components: {
     ViBar,
     ViLine,
     ViHistogram,
     ViPie,
     ViRing,
-    ViRadar,
-    ViChart,
-    ViMap,
-    ViScatter,
+    // ViRadar,
+    // ViChart,
+    // ViMap,
+    // ViScatter,
     // ViWaterfall,
     // ViFunnel,
     // ViSankey,
@@ -92,7 +87,7 @@ export default {
     // ViTree,
     // ViLiquidfill,
     // ViWordcloud
-    ViGauge
+    // ViGauge
   }
 }
 </script>

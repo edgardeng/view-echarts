@@ -1,10 +1,10 @@
 import 'echarts/lib/chart/pie'
-import { pie } from './main'
+import { ring } from '../pie/main'
 import Core from '../core'
 export default Object.assign({}, Core, {
-  name: 'VePie',
+  name: 'Ring',
   data () {
-    this.chartHandler = pie
+    this.chartHandler = ring
     return {}
   }
 })

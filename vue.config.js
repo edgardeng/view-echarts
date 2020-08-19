@@ -7,6 +7,15 @@ const webpack = require('webpack');
 const path = require('path');
 const resolve = (dir) => path.resolve(__dirname, dir);
 module.exports = {
+  publicPath: '',
+  configureWebpack: {
+    // externals: {
+    //   'vue': 'Vue',
+    //   'vue-router': 'VueRouter',
+    //   'vuex': 'Vuex',
+    //   'echarts': 'echarts',
+    // },
+  },
   // 修改 src 目录 为 examples 目录
   pages: {
     index: {
@@ -25,7 +34,7 @@ module.exports = {
       .loader('url-loader')
       .tap((options) => Object.assign(options, { limit: 13312 }));
   },
-  // 设置css: { extract: false },可以强制内联，就不会将css单独打包成一个文件，导致页面没有style
+  // 设置css: { extract: false },可以强制内联，就不会将css单独打包成一个文件，导致页面没有style
   css: { extract: false },
   productionSourceMap: false,
 };

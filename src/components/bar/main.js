@@ -1,6 +1,6 @@
 import { itemPoint } from '../constants'
 import { getFormated, getStackMap } from '../utils'
-import { set, get, cloneDeep } from 'utils-lite'
+import { set, get, cloneDeep } from '../types'
 // default opacity of bar while dim-axis type is 'value'
 const VALUE_AXIS_OPACITY = 0.5
 
@@ -50,7 +50,7 @@ function getBarMeaAxis (args) {
     },
     show: axisVisible
   }
-  let meaAxis = []
+  const meaAxis = []
 
   for (let i = 0; i < 2; i++) {
     if (meaAxisType[i]) {
@@ -86,7 +86,7 @@ function getBarTooltip (args) {
   return {
     trigger: 'axis',
     formatter (items) {
-      let tpl = []
+      const tpl = []
       tpl.push(`${items[0].name}<br>`)
       items.forEach(item => {
         const seriesName = item.seriesName
@@ -135,7 +135,7 @@ export function getBarSeries (args) {
     opacity,
     dims
   } = args
-  let series = []
+  // let series = []
   const seriesTemp = {}
   const secondAxis = isHistogram
     ? axisSite.right || []
@@ -148,7 +148,7 @@ export function getBarSeries (args) {
       seriesTemp[item].push(row[item])
     })
   })
-  series = Object.keys(seriesTemp).map((item, index) => {
+  const series = Object.keys(seriesTemp).map((item, index) => {
     const data = dimAxisType === 'value'
       ? getValueData(seriesTemp[item], dims)
       : seriesTemp[item]

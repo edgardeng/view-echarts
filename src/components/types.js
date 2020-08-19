@@ -3,7 +3,7 @@ export function getType(v) {
 }
 
 export function getTypeof(v) {
-  return typeof v === 'undefined' ? 'undefined' : _typeof(v);
+  return typeof v === 'undefined' ? 'undefined' : typeof v;
 }
 
 export function isArray(obj) {
@@ -23,7 +23,7 @@ export function isHtmlElement(node) {
 }
 
 export const isFunction = (functionToCheck) => {
-  var getType = {};
+  const getType = {};
   return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
 };
 
@@ -41,8 +41,8 @@ function hasOwn(source, target) {
 
 export function set(target, path, value) {
   if (!path) return;
-  var targetTemp = target;
-  var pathArr = path.split('.');
+  let targetTemp = target;
+  const pathArr = path.split('.');
   pathArr.forEach(function (item, index) {
     if (index === pathArr.length - 1) {
       targetTemp[item] = value;
@@ -53,28 +53,26 @@ export function set(target, path, value) {
   });
 }
 
-// function get(target, path, defaultValue) {
-//   if (!path) return target;
-//   var pathArr = path.split('.');
-//   var targetTemp = target;
-//   pathArr.some(function (item, index) {
-//     if (targetTemp[item] === undefined) {
-//       targetTemp = defaultValue;
-//       return true;
-//     } else {
-//       targetTemp = targetTemp[item];
-//     }
-//   });
-//   return targetTemp;
-// }
+export function get(target, path, defaultValue) {
+  if (!path) return target;
+  const pathArr = path.split('.');
+  let targetTemp = target;
+  pathArr.some(function (item, index) {
+    if (targetTemp[item] === undefined) {
+      targetTemp = defaultValue;
+      return true;
+    } else {
+      targetTemp = targetTemp[item];
+    }
+  });
+  return targetTemp;
+}
 
-
-
-export function debounce(fn, delay) {
-  var timer = null;
+export function debounce(fn, delay, ...args) {
+  let timer = null;
   return function () {
-    var self = this;
-    var args = arguments;
+    const self = this;
+    // const args = arguments;
     clearTimeout(timer);
     timer = setTimeout(function () {
       fn.apply(self, args);
@@ -88,11 +86,11 @@ export function isEqual(alice, bob) {
     return alice === bob;
   }
 
-  for (var key in alice) {
+  for (const key in alice) {
     if (!hasOwn(alice, key)) continue;
-    var aliceValue = alice[key];
-    var bobValue = bob[key];
-    var aliceType = getTypeof(aliceValue);
+    const aliceValue = alice[key];
+    const bobValue = bob[key];
+    const aliceType = getTypeof(aliceValue);
 
     if (getTypeof(bobValue) === 'undefined') {
       return false;
@@ -102,7 +100,7 @@ export function isEqual(alice, bob) {
       return false;
     }
   }
-  for (var _key in bob) {
+  for (const _key in bob) {
     if (!hasOwn(bob, _key)) continue;
     if (getTypeof(alice)[_key] === 'undefined') return false;
   }

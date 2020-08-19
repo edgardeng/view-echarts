@@ -4,6 +4,7 @@ src/
 static/
 .idea/
 dist/
+docs/
 
 .*
 package-lock.json

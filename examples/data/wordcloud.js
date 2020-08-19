@@ -1,4 +1,3 @@
-
 const data = {
   columns: ['word', 'count'],
   rows: getRows()
@@ -7,35 +6,40 @@ const data = {
 export default {
   name: '词云图',
   type: 'wordcloud',
-  data: [{
-    name: '简单词云图',
-    data: data
-  }, {
-    name: '设置词云图的颜色',
-    data: data,
-    settings: {
-      color: ['#f00', '#ff0', '#00f', '#0ff', '#00a0e9', '#ff125e']
-    }
-  }, {
-    name: '设置词云图的形状',
-    data: {
-      columns: ['word', 'count'],
-      rows: getRows().slice(0, 100)
+  data: [
+    {
+      name: '简单词云图',
+      data: data
     },
-    settings: {
-      shape: 'triangle'
+    {
+      name: '设置词云图的颜色',
+      data: data,
+      settings: {
+        color: ['#f00', '#ff0', '#00f', '#0ff', '#00a0e9', '#ff125e']
+      }
+    },
+    {
+      name: '设置词云图的形状',
+      data: {
+        columns: ['word', 'count'],
+        rows: getRows().slice(0, 100)
+      },
+      settings: {
+        shape: 'triangle'
+      }
+    },
+    {
+      name: '设置词云图字体大小',
+      data: data,
+      settings: {
+        sizeMin: 30,
+        sizeMax: 60
+      }
     }
-  }, {
-    name: '设置词云图字体大小',
-    data: data,
-    settings: {
-      sizeMin: 30,
-      sizeMax: 60
-    }
-  }]
+  ]
 }
 
-function getRows () {
+function getRows() {
   const rows = [{
     'word': 'visualMap',
     'count': 22199

@@ -1,5 +1,5 @@
 import { getFormated, getStackMap } from '../utils'
-import { isArray } from '@/utils/types'
+import { isArray } from '..//types'
 
 function getLineXAxis (args) {
   const { dimension, rows, xAxisName, axisVisible, xAxisType } = args

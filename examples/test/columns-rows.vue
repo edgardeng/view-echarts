@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { ViLine } from '../../src/packages/index'
+import ViLine from '@/components/line'
 import { LINE_DATA } from './data'
 export default {
   data () {

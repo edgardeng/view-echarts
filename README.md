@@ -1,5 +1,5 @@
 <p align="center">
-<img src="./examples/static/logo.png" width="100" height="100">
+<img src="./examples/assets/img/logo.png" width="100" height="100">
 </p>
 
 <h2 align="center">view-echarts</h2>
