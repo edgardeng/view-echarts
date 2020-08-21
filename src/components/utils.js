@@ -1,5 +1,5 @@
 import numerify from 'numerify'
-import { isFunction } from '@/components/types'
+import { isFunction } from './types'
 
 export const getFormated = (val, type, digit, defaultVal = '-') => {
   if (isNaN(val)) return defaultVal

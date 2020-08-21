@@ -1,4 +1,4 @@
-import { set, isArray, isObject } from '@/components/types'
+import { set, isArray, isObject } from '../types'
 
 export default function (options, extend) {
   Object.keys(extend).forEach(attr => {

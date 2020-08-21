@@ -5,7 +5,8 @@ static/
 .idea/
 dist/
 docs/
-
+babel.config.js
+deploy.sh
 .*
 package-lock.json
 /.git/

@@ -36,14 +36,15 @@
     <h2>toolbox</h2>
     <vi-line :data="chartData" :toolbox="toolbox"></vi-line>
     <h2>title</h2>
-    <vi-line :data="chartData" :title="title"></vi-line>
+    <vi-pie :data="chartData" :title="title" :legend="{show:false}"></vi-pie>
     <h2>others</h2>
+<!--    :radar="radar"-->
     <vi-line
         :data="chartData"
       :legend="legend"
       :x-axis="xAxis"
       :y-axis="yAxis"
-      :radar="radar"
+
       :tooltip="tooltip"
       :axis-pointer="axisPointer"
       :brush="brush"
@@ -59,6 +60,7 @@
 
 <script>
 import ViLine from '@/components/line'
+import ViPie from '@/components/pie'
 import { LINE_DATA } from './data'
 import 'echarts/lib/component/visualMap'
 import 'echarts/lib/component/dataZoom'
@@ -90,12 +92,14 @@ export default {
       }
     }
     this.title = {
-      textAlign: 'left',
+      x:'center',
+      y:'top',
+      textAlign: 'center',
       text: 'Custom Chart Title',
-      textStyle: {
-        fontSize: 20,
-        fontWeight: 'normal'
-      }
+      // textStyle: {
+      //   fontSize: 20,
+      //   fontWeight: 'normal'
+      // }
     }
     this.legend = {}
     this.xAxis = {}
@@ -119,6 +123,6 @@ export default {
       return v
     }
   },
-  components: { ViLine }
+  components: { ViLine , ViPie}
 }
 </script>
