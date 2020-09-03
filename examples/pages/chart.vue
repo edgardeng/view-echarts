@@ -30,9 +30,12 @@ import ViLine from '@/components/line'
 import ViHistogram from '@/components/histogram'
 import ViPie from '@/components/pie'
 import ViRing from '@/components/ring'
-// import ViRadar from '@/components/radar'
-// import ViChart from '@/components/chart'
-// import ViMap from '@/components/map'
+import ViWaterfall from '@/components/waterfall'
+import ViFunnel from '@/components/funnel'
+import ViRadar from '@/components/radar'
+import ViChart from '@/components/chart'
+
+import ViMap from '@/components/map'
 // import ViScatter from '@/components/scatter'
 // import ViGauge from '@/components/gauge'
 
@@ -43,8 +46,6 @@ import ViRing from '@/components/ring'
 // import ViTree from '@/components/tree'
 // import ViLiquidfill from '@/components/liquidfill'
 // import ViWordcloud from '@/components/wordcloud'
-// import ViWaterfall from '@/components/waterfall'
-// import ViFunnel from '@/components/funnel'
 import CHART_DATA from '../data'
 
 export default {
@@ -75,12 +76,12 @@ export default {
     ViHistogram,
     ViPie,
     ViRing,
-    // ViRadar,
-    // ViChart,
-    // ViMap,
+    ViRadar,
+    ViChart,
+    ViMap,
     // ViScatter,
-    // ViWaterfall,
-    // ViFunnel,
+    ViWaterfall,
+    ViFunnel,
     // ViSankey,
     // ViHeatmap,
     // ViCandle,

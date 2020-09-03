@@ -1,24 +1,24 @@
 <template>
   <div>
-    <ve-bmap
+    <vi-bmap
       :settings="chartSettings"
       :series="chartSeries"
       :after-set-option-once="getMap"
       :mark-line="markLine">
-    </ve-bmap>
+    </vi-bmap>
     <button @click="markLine = {}">toggle</button>
     <button @click="add">add</button>
   </div>
 </template>
 
 <script>
-import ViBmap from '../../src/packages/bmap'
+import ViBmap from '../../src/components/bmap'
 export default {
   name: 'bmap',
   data () {
     return {
       chartSettings: {
-        key: 'oBvDtR6nzWtVchkY4cLHtnah1VVZQKRK',
+        key: 'Z5S0DmA3cDZwIr20ZBAnINPxkjerHTMx',
         v: '3.0',
         useOuterMap: true,
         bmap: {
@@ -44,6 +44,7 @@ export default {
 
   methods: {
     getMap (echarts) {
+      console.log()
       const bmap = echarts.getModel().getComponent('bmap').getBMap()
       bmap.addControl(new window.BMap.MapTypeControl())
     },
@@ -53,6 +54,6 @@ export default {
     }
   },
 
-  components: { VeBmap }
+  components: { ViBmap }
 }
 </script>

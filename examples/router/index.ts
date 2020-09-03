@@ -22,6 +22,7 @@ const routes : Array<RouteConfig> = [
   //  { path: '/', name: '安装', component: Home }
   { path: '/', name: '安装', component: resolve => require(['../pages/install.vue'], resolve) },
   { path: '/chart/:type', name: '图表', component: resolve => require(['../pages/chart.vue'], resolve) },
+  { path: '/bmap', name: '百度地图', component: resolve => require(['../pages/bmap.vue'], resolve) },
 ];
 
 const router = new VueRouter({

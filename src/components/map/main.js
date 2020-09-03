@@ -5,11 +5,11 @@ import { getMapJSON, getFormated } from '../utils'
 function getTooltip (dataType, digit, dataStore, metrics, color, labelMap) {
   return {
     formatter (item) {
-      let tpl = []
+      const tpl = []
       if (!item.name) return ''
       tpl.push(`${item.name}<br>`)
       metrics.forEach((label, index) => {
-        let title = labelMap[label] != null ? labelMap[label] : label
+        const title = labelMap[label] != null ? labelMap[label] : label
         tpl.push(`${itemPoint(color[index])} ${title} : `)
         if (dataStore[item.name]) {
           tpl.push(getFormated(dataStore[item.name][label], dataType[label], digit))
@@ -19,6 +19,17 @@ function getTooltip (dataType, digit, dataStore, metrics, color, labelMap) {
         tpl.push('<br>')
       })
       return tpl.join(' ')
+    }
+  }
+}
+
+function setGeoLabel (value, target, label) {
+  if (typeof value === 'object') {
+    target[label] = value
+  } else if (value) {
+    target[label] = {
+      normal: { show: true },
+      emphasis: { show: true }
     }
   }
 }
@@ -126,8 +137,8 @@ function getSeries (args) {
       }, scatterPoint)
 
       rows.forEach(row => {
-        let name = row[dimension]
-        let coord = JSON.parse(JSON.stringify(mapGeoCoord[name]))
+        const name = row[dimension]
+        const coord = JSON.parse(JSON.stringify(mapGeoCoord[name]))
         coord.push(row[itemName])
         itemResult.data.push({
           name,
@@ -139,17 +150,6 @@ function getSeries (args) {
   }
 
   return result
-}
-
-function setGeoLabel (value, target, label) {
-  if (typeof value === 'object') {
-    target[label] = value
-  } else if (value) {
-    target[label] = {
-      normal: { show: true },
-      emphasis: { show: true }
-    }
-  }
 }
 
 function getLegendMap (args) {
@@ -213,7 +213,7 @@ export const map = (columns, rows, settings, extra) => {
     specialAreas = {},
     mapGeoCoord
   } = settings
-  let mapOrigin = settings.mapOrigin
+  const mapOrigin = settings.mapOrigin
   let metrics = columns.slice()
   if (settings.metrics) {
     metrics = settings.metrics
@@ -265,7 +265,7 @@ export const map = (columns, rows, settings, extra) => {
       mapURLProfix
     }).then(json => {
       registerMap(registerOptions, json)
-      let options = { series, tooltip, legend }
+      const options = { series, tooltip, legend }
       if (mapGeoCoord) {
         options.geo = {
           map: position,

@@ -1,6 +1,6 @@
 {
   "name": "view-echarts",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": false,
   "description": "Chart components based on Vuejs 2.x and Echarts",
   "main": "lib/index.js",

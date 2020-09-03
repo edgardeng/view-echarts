@@ -2,8 +2,7 @@ import { itemPoint } from '../constants'
 import { getFormated } from '../utils'
 
 function getRadarLegend (rows, dimension, legendName) {
-  let legendData = rows.map(row => row[dimension])
-
+  const legendData = rows.map(row => row[dimension])
   return {
     data: legendData,
     formatter (name) {
@@ -39,7 +38,7 @@ function getRadarSetting (rows, metrics, labelMap) {
     shape: 'circle',
     splitNumber: 5
   }
-  let indicatorTemp = {}
+  const indicatorTemp = {}
   rows.forEach(items => {
     metrics.forEach(item => {
       const key = labelMap[item] != null
@@ -73,7 +72,7 @@ function getRadarSeries (args) {
     labelMap,
     areaStyle
   } = args
-  let radarIndexObj = {}
+  const radarIndexObj = {}
   radar.indicator.forEach((item, index) => {
     const name = item.name
     radarIndexObj[name] = index
@@ -86,9 +85,7 @@ function getRadarSeries (args) {
     }
     Object.keys(row).forEach(key => {
       if (~metrics.indexOf(key)) {
-        let k = labelMap[key] != null
-          ? radarIndexObj[labelMap[key]]
-          : radarIndexObj[key]
+        const k = labelMap[key] != null ? radarIndexObj[labelMap[key]] : radarIndexObj[key]
         serieData.value[k] = row[key]
       }
     })

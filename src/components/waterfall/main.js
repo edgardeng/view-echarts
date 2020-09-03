@@ -129,7 +129,7 @@ export const waterfall = (columns, rows, settings, extra) => {
     digit = 2
   } = settings
   const { tooltipVisible } = extra
-  let metricsTemp = columns.slice()
+  const metricsTemp = columns.slice()
   metricsTemp.splice(metricsTemp.indexOf(dimension), 1)
   const metrics = metricsTemp[0]
   const yAxisName = metrics
