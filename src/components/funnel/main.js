@@ -5,7 +5,7 @@ function getFunnelTooltip (dataType, digit) {
   return {
     trigger: 'item',
     formatter (item) {
-      let tpl = []
+      const tpl = []
       tpl.push(itemPoint(item.color))
       tpl.push(`${item.name}: ${getFormated(item.data.realValue, dataType, digit)}`)
       return tpl.join('')
@@ -36,7 +36,7 @@ function getFunnelSeries (args) {
     filterZero,
     useDefaultOrder
   } = args
-  let series = { type: 'funnel' }
+  const series = { type: 'funnel' }
   let innerRows = rows.sort((a, b) => {
     return sequence.indexOf(a[dimension]) - sequence.indexOf(b[dimension])
   })
@@ -99,7 +99,7 @@ export const funnel = (outerColumns, outerRows, settings, extra) => {
   if (settings.metrics) {
     metrics = settings.metrics
   } else {
-    let metricsTemp = columns.slice()
+    const metricsTemp = columns.slice()
     metricsTemp.splice(columns.indexOf(dimension), 1)
     metrics = metricsTemp[0]
   }

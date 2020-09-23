@@ -27,7 +27,7 @@ const routerInfo = {
   }),
   '其他': [
     { name: '百度地图', url: '/bmap' },
-    { name: '高德地图', url: '/amap' }
+    // { name: '高德地图', url: '/amap' }
   ],
   '测试示例': TEST_ROUTES.map(({ name, path }) => ({ name, url: path }))
 }
