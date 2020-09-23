@@ -1,6 +1,6 @@
 import { itemPoint } from '../constants'
 import { getFormated } from '../utils'
-import { isArray } from 'utils-lite'
+import { isArray } from '../types'
 
 const DEFAULT_MA = [5, 10, 20, 30]
 const DEFAULT_K_NAME = '日K'

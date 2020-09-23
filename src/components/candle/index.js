@@ -6,7 +6,7 @@ import 'echarts/lib/component/dataZoom'
 import { candle } from './main'
 import Core from '../core'
 export default Object.assign({}, Core, {
-  name: 'VeCandle',
+  name: 'Candle',
   data () {
     this.chartHandler = candle
     return {}

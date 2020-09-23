@@ -33,7 +33,7 @@ export default {
   scatter,
   candle,
   gauge,
-  tree,
-  liquidfill,
-  wordcloud
+  // tree,
+  // liquidfill,
+  // wordcloud
 }

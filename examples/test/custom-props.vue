@@ -26,7 +26,7 @@
     <h2> backgroundColor</h2>
     <vi-line :data="chartData" :grid="chartGrid" background-color="#eee"></vi-line>
     <h2> grid</h2>
-    <vi-line :data="chartData" :grid="chartGrid1"></vi-line>
+    <vi-line :data="chartData" :grid="chartGrid1" :y-axis="yAxis"></vi-line>
     <h2> colors</h2>
     <vi-line :data="chartData" :colors="chartColors"></vi-line>
     <h2>visualMap</h2>
@@ -37,6 +37,7 @@
     <vi-line :data="chartData" :toolbox="toolbox"></vi-line>
     <h2>title</h2>
     <vi-pie :data="chartData" :title="title" :legend="{show:false}"></vi-pie>
+
     <h2>others</h2>
 <!--    :radar="radar"-->
     <vi-line
@@ -44,7 +45,6 @@
       :legend="legend"
       :x-axis="xAxis"
       :y-axis="yAxis"
-
       :tooltip="tooltip"
       :axis-pointer="axisPointer"
       :brush="brush"
@@ -103,7 +103,7 @@ export default {
     }
     this.legend = {}
     this.xAxis = {}
-    this.yAxis = {}
+    this.yAxis = { minInterval: 1}
     this.radar = {}
     this.tooltip = {}
     this.axisPointer = {}

@@ -1,4 +1,4 @@
-import { isArray } from 'utils-lite'
+import { isArray } from '../types'
 import { itemPoint } from '../constants'
 import { getFormated } from '../utils'
 import { line } from '../line/main'

@@ -1,5 +1,5 @@
 import { getFormated } from '../utils'
-import { isObject } from 'utils-lite'
+import { isObject } from '../types'
 
 function getTooltip (args) {
   const { tooltipFormatter, dataType, digit } = args

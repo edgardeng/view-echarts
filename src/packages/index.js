@@ -6,8 +6,8 @@ import ViRing from '../components/ring/index'
 import ViRadar from '../components/radar/index'
 import ViChart from './chart/index'
 import ViMap from '../components/map/index'
-import ViGauge from './gauge/index'
-import ViScatter from './scatter/index'
+import ViGauge from '../components/gauge/index'
+import ViScatter from '../components/scatter/index'
 
 // import ViWaterfall from './packages/waterfall'
 // import ViFunnel from './packages/funnel'
@@ -30,10 +30,10 @@ const components = [
   ViChart,
   ViMap,
   ViScatter,
-  ViGauge
-  // ViHeatmap,
+  ViGauge,
+  ViHeatmap,
   // ViWaterfall,
-  // ViFunnel,
+  ViFunnel,
   // ViBmap,
   // ViAmap,
   // ViSankey,

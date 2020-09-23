@@ -36,13 +36,11 @@ import ViRadar from '@/components/radar'
 import ViChart from '@/components/chart'
 
 import ViMap from '@/components/map'
-// import ViScatter from '@/components/scatter'
-// import ViGauge from '@/components/gauge'
-
+import ViScatter from '@/components/scatter'
+import ViGauge from '@/components/gauge'
+import ViHeatmap from '@/components/heatmap'
+import ViCandle from '@/components/candle'
 // import ViSankey from '@/components/sankey'
-// import ViHeatmap from '@/components/heatmap'
-// import ViScatter from '@/components/scatter'
-// import ViCandle from '@/components/candle'
 // import ViTree from '@/components/tree'
 // import ViLiquidfill from '@/components/liquidfill'
 // import ViWordcloud from '@/components/wordcloud'
@@ -79,12 +77,13 @@ export default {
     ViRadar,
     ViChart,
     ViMap,
-    // ViScatter,
+    ViScatter,
     ViWaterfall,
     ViFunnel,
     // ViSankey,
-    // ViHeatmap,
-    // ViCandle,
+    ViHeatmap,
+    ViCandle,
+    ViGauge
     // ViTree,
     // ViLiquidfill,
     // ViWordcloud

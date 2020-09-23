@@ -42,7 +42,7 @@ function getAxis (list, name) {
 
 function getVisualMap (args) {
   const { innerMin: min, innerMax: max, type, heatColor, series } = args
-  let result = {
+  const result = {
     min,
     max,
     calculable: true

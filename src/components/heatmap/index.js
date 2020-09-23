@@ -5,7 +5,7 @@ import 'echarts/lib/chart/map'
 import { heatmap } from './main'
 import Core from '../core'
 export default Object.assign({}, Core, {
-  name: 'VeHeatmap',
+  name: 'Heatmap',
   data () {
     this.chartHandler = heatmap
     return {}
